@@ -62,6 +62,7 @@ SELECT * FROM persona WHERE persona.id IN(SELECT profesor.id_profesor FROM profe
 SELECT * FROM departamento LEFT JOIN profesor ON departamento.id=profesor.id_departamento WHERE profesor.id_departamento IS NULL;
 SELECT * FROM persona WHERE persona.id IN(SELECT profesor.id_profesor FROM profesor LEFT JOIN asignatura ON profesor.id_profesor=asignatura.id_profesor WHERE asignatura.id_profesor IS NULL);
 SELECT DISTINCT asignatura.id, nombre, creditos, tipo, curso, cuatrimestre, asignatura.id_profesor, id_grado FROM asignatura RIGHT JOIN profesor ON asignatura.id_profesor IS NULL;
+SELECT DISTINCT departamento.id, departamento.nombre FROM departamento LEFT JOIN profesor ON departamento.id=profesor.id_departamento LEFT JOIN asignatura ON profesor.id_profesor=asignatura.id_profesor WHERE asignatura.id_profesor IS NULL;
 
 SELECT nombre FROM persona WHERE tipo='alumno';
 SELECT SUM(tipo='alumno') FROM persona WHERE fecha_nacimiento LIKE '%1999%';
